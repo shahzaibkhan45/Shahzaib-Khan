@@ -37,8 +37,16 @@
 //     }
 //   });
 // };
+// if(typeof Typed !== "undefined"){
+// let typed = new Typed("#typing", {
+//     strings: ["Web Developer", "Web Designer", "Frontend Developer"],
+//     typeSpeed: 100,
+//     backSpeed: 50,
+//     loop: true
+// });
+// }
 
-window.addEventListener("scroll", () => {
+function updateActiveLink() {
     const sections = document.querySelectorAll(".section");
     const links = document.querySelectorAll(".nav-links a");
 
@@ -58,7 +66,14 @@ window.addEventListener("scroll", () => {
             }
         }
     });
-});
+}
+
+// Call on page load
+updateActiveLink();
+
+// Call on scroll
+window.addEventListener("scroll", updateActiveLink);
+
 const reveals = document.querySelectorAll(".reveal");
 if (reveals) {
 
@@ -76,7 +91,7 @@ if (reveals) {
         observer.observe(section);
     });
 }
-if (document.querySelector(".typing")) {
+if (document.querySelector("#typing")) {
     let typed = new Typed("#typing", {
         strings: ["Web Developer", "Web Designer", "Frontend Developer"],
         typeSpeed: 100,
@@ -235,4 +250,21 @@ if (form) {
 
     });
 
+}
+
+const sidebar = document.querySelector(".side-bar");
+const home = document.getElementById("home");
+
+window.addEventListener("scroll", () => {
+    const homeBottom = home.offsetTop + home.offsetHeight - 100;
+
+    if (window.scrollY >= homeBottom) {
+        sidebar.classList.add("show");
+    } else {
+        sidebar.classList.remove("show");
+    }
+});
+
+if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
 }
