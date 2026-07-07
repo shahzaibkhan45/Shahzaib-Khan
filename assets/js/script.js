@@ -165,7 +165,8 @@ startCounter("html", 90, 20);
 startCounter("css", 85, 20);
 startCounter("javascript", 60, 20);
 startCounter("bootstrap", 90, 20);
-
+startCounter("user-research", 90 , 20)
+startCounter("information-architecture", 70 , 20)
 // accordion button
 const accordionButtons = document.querySelectorAll(".accordion-btn button");
 accordionButtons.forEach(button => {
@@ -268,3 +269,45 @@ window.addEventListener("scroll", () => {
 if ("scrollRestoration" in history) {
     history.scrollRestoration = "manual";
 }
+
+// const navHeight = document.querySelector("header nav").offsetHeight;
+
+// document.querySelectorAll('.nav-links a').forEach(link => {
+//     link.addEventListener("click", function (e) {
+//         e.preventDefault();
+
+//         const target = document.querySelector(this.getAttribute("href"));
+
+//         window.scrollTo({
+//             top: target.offsetTop,
+//             behavior: "smooth"
+//         });
+//     });
+// });
+// const section = document.querySelectorAll("section");
+// document.querySelectorAll('.nav-links a').forEach(link => {
+//     link.addEventListener("click", function () {
+//         section.classList.add(".remove");
+//     })
+// });
+
+// const sections = document.querySelectorAll(
+// "#home,#about,#services,#skills,#education,#contact"
+// );
+// const links = document.querySelectorAll(".nav-links a");
+
+// let clickCount = 0;
+
+// links.forEach(link => {
+//     link.addEventListener("click", () => {
+
+//         clickCount++;
+
+//         if (clickCount >= 2) {
+//             sections.forEach(section => {
+//                 section.classList.add("remove");
+//             });
+//         }
+
+//     });
+// });
