@@ -1,50 +1,4 @@
-// const navMenu = document.getElementById("nav_menu");
-// const navToggle = document.getElementById("nav_toggle");
-// const navClose = document.getElementById("nav_close");
-// const navlinks = document.querySelectorAll(".nav_list a");
 
-// // open menu
-// navToggle.addEventListener("click", () => {
-//   navMenu.classList.add("show-menu");
-
-//   navClose.classList.add("show-close");
-//   navToggle.classList.add("hide-toggle");
-// });
-// // cancel button
-// navClose.addEventListener("click", () => {
-//   navMenu.classList.remove("show-menu");
-
-//     navClose.classList.remove("show-close");
-//   navToggle.classList.remove("hide-toggle");
-// });
-// navlinks.forEach(links=>{
-// links.addEventListener("click",()=>{
-//    navMenu.classList.remove("show-menu");
-//     navClose.classList.remove("show-close");
-//   navToggle.classList.remove("hide-toggle");
-// })
-// });
-// window.onscroll = function () {
-//   let sections = document.querySelectorAll(".section");
-//   let scroll = window.scrollY;
-
-//   sections.forEach(sec => {
-//     if (scroll >= sec.offsetTop - 200 && scroll < sec.offsetTop + sec.offsetHeight) {
-
-//       document.querySelectorAll(".nav-links ul li a").forEach(a => a.classList.remove("active"));
-
-//       document.querySelector('.nav-links ul li a[href="#' + sec.id + '"]').classList.add("active");
-//     }
-//   });
-// };
-// if(typeof Typed !== "undefined"){
-// let typed = new Typed("#typing", {
-//     strings: ["Web Developer", "Web Designer", "Frontend Developer"],
-//     typeSpeed: 100,
-//     backSpeed: 50,
-//     loop: true
-// });
-// }
 
 function updateActiveLink() {
     const sections = document.querySelectorAll(".section");
@@ -226,7 +180,7 @@ if (form) {
         )
             .then(function () {
                 toast.hidden = false;
-                toast.innerHTML = "Form submitted successfully ✅";
+                toast.innerHTML = "Form submitted successfully âœ…";
                 toast.classList.add("show");
                 setTimeout(() => {
                     toast.classList.remove("show");
@@ -240,7 +194,7 @@ if (form) {
 
                 console.log(error);
                 toast.hidden = false;
-                toast.innerHTML = "Failed To Send Email ❌";
+                toast.innerHTML = "Failed To Send Email âŒ";
                 toast.classList.add("show");
                 setTimeout(() => {
                     toast.classList.remove("show");
@@ -270,44 +224,85 @@ if ("scrollRestoration" in history) {
     history.scrollRestoration = "manual";
 }
 
-// const navHeight = document.querySelector("header nav").offsetHeight;
+const navHeight = document.querySelector("header nav").offsetHeight;
 
-// document.querySelectorAll('.nav-links a').forEach(link => {
-//     link.addEventListener("click", function (e) {
-//         e.preventDefault();
+function scrollToHash() {
+    const hash = window.location.hash;
+    if (hash) {
+        const target = document.querySelector(hash);
+        if (target) {
+            setTimeout(() => {
+                window.scrollTo({
+                    top: target.offsetTop - navHeight,
+                    behavior: "smooth"
+                });
+            }, 100);
+        }
+    }
+}
 
-//         const target = document.querySelector(this.getAttribute("href"));
+// Scroll to hash on page load
+window.addEventListener("load", () => {
+    const navigation =
+        performance.getEntriesByType("navigation")[0];
 
-//         window.scrollTo({
-//             top: target.offsetTop,
-//             behavior: "smooth"
-//         });
-//     });
-// });
-// const section = document.querySelectorAll("section");
-// document.querySelectorAll('.nav-links a').forEach(link => {
-//     link.addEventListener("click", function () {
-//         section.classList.add(".remove");
-//     })
-// });
+    if (navigation.type !== "reload") {
+        scrollToHash();
+    }
+});
+window.addEventListener("load", () => {
 
-// const sections = document.querySelectorAll(
-// "#home,#about,#services,#skills,#education,#contact"
-// );
-// const links = document.querySelectorAll(".nav-links a");
+    const navigation =
+        performance.getEntriesByType("navigation")[0];
 
-// let clickCount = 0;
+    if (navigation.type !== "reload") {
+        scrollToHash();
+    }
 
-// links.forEach(link => {
-//     link.addEventListener("click", () => {
+});
 
-//         clickCount++;
+// Scroll to hash when hash changes
+window.addEventListener("hashchange", scrollToHash);
 
-//         if (clickCount >= 2) {
-//             sections.forEach(section => {
-//                 section.classList.add("remove");
-//             });
-//         }
+document.querySelectorAll('.nav-links a, .logo a').forEach(link => {
+    link.addEventListener("click", function (e) {
+        const href = this.getAttribute("href");
+        if (href.startsWith('#')) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - navHeight,
+                    behavior: "smooth"
+                });
+            }
+        }
+    });
+});
+const section = document.querySelectorAll("section");
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener("click", function () {
+        section.classList.add(".remove");
+    })
+});
 
-//     });
-// });
+const sections = document.querySelectorAll(
+"#home,#about,#services,#skills,#education,#contact"
+);
+const links = document.querySelectorAll(".nav-links a");
+
+let clickCount = 0;
+
+links.forEach(link => {
+    link.addEventListener("click", () => {
+
+        clickCount++;
+
+        if (clickCount >= 2) {
+            sections.forEach(section => {
+                section.classList.add("remove");
+            });
+        }
+
+    });
+});
