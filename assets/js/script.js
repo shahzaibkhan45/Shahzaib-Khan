@@ -54,31 +54,36 @@ if (document.querySelector("#typing")) {
     })
 }
 
-// Dark Mode
+// Theme toggle
 const darkModeBtn = document.getElementById("darkMode");
 const body = document.body;
 const icon = darkModeBtn.querySelector("i");
 
-// Load saved theme
-if (localStorage.getItem("theme") === "dark") {
-    body.classList.add("dark");
+// Load saved theme; default is dark
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme === "light") {
+    body.classList.add("light");
+    icon.classList.remove("bi-sun-fill");
+    icon.classList.add("bi-moon-fill");
+} else {
+    body.classList.remove("light");
     icon.classList.remove("bi-moon-fill");
     icon.classList.add("bi-sun-fill");
+    localStorage.setItem("theme", "dark");
 }
+
 darkModeBtn.addEventListener("click", () => {
-    body.classList.toggle("dark");
+    body.classList.toggle("light");
 
-
-    if (body.classList.contains("dark")) {
-        icon.classList.remove("bi-moon-fill");
-        icon.classList.add("bi-sun-fill");
-        localStorage.setItem("theme", "dark");
-    } else {
+    if (body.classList.contains("light")) {
         icon.classList.remove("bi-sun-fill");
         icon.classList.add("bi-moon-fill");
         localStorage.setItem("theme", "light");
+    } else {
+        icon.classList.remove("bi-moon-fill");
+        icon.classList.add("bi-sun-fill");
+        localStorage.setItem("theme", "dark");
     }
-
 });
 function startCounter(id, target, speed) {
     const element = document.getElementById(id);
