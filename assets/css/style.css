@@ -536,7 +536,7 @@ background-color: var(--primary-color);
     font-weight: 600;
 }
 /* side bar */
-.side-bar{
+.main-side-bar{
     position: fixed;
     top: 50%;
     left: -100%;
@@ -545,6 +545,8 @@ background-color: var(--primary-color);
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 20px;
     background-color: var(--surface-color);
     padding: 20px;
@@ -552,11 +554,28 @@ background-color: var(--primary-color);
     border-radius: 10px;
     z-index: 1000;
 }
-.side-bar.show{
+.side-arrow-open{
+    display: none;
+     font-size: 1.5rem;
+      cursor: pointer;
+}
+.side-arrow-close i{
+    font-size: 1.5rem;
+    /* color: var(--primary-color); */
+    cursor: pointer;
+}
+.main-side-bar.show{
     opacity: 1;
     left: 0;
     transition: 0.5s;
     visibility: visible;
+}
+.account-link{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 }
 .side-bar .account-link{
     display: flex;
@@ -714,6 +733,9 @@ background-color: var(--primary-color);
     background-color: var(--primary-color);
 
 }
+.cards:nth-child(3):hover{
+    background-color: var(--surface-color);
+}
 
 .cards:nth-child(4){
 
@@ -756,6 +778,9 @@ background-color: var(--primary-color);
 
     z-index:10;
 
+}
+.cards:hover.active{
+    background-color: var(--surface-color);
 }
 
 .cards.active h3,
@@ -1686,7 +1711,8 @@ gap:10px;
     .hero-section{
         min-height: auto;
         margin: 0 50px;
-        padding: 200px 0;
+        padding: 131px 0;
+        /* ye change kiya 200px se 131 se */
         font-size:1.1rem;
     }
     .hero-image img{
@@ -1736,6 +1762,10 @@ gap:10px;
         padding:20px 30px;
         font-size: 1.1rem;
     }
+    /* .education-skills{
+min-width: 400px;
+margin: 0 auto;
+} */
     /* contact section */
     .contact-section{
         min-height:auto;
@@ -1768,6 +1798,7 @@ gap:10px;
     .cards{
         width: calc(50% - 18px);
         max-width: 320px;
+        height: 300px;
         padding: 20px;
         min-width: 220px;
         height: auto;
@@ -1787,10 +1818,63 @@ gap:10px;
         line-height: 1.2;
         font-size: 0.95rem;
     }
-    skill section
+    
     .skills-section h1{
         font-size: 2rem;
     }
+}
+@media (max-width: 992px){
+    .education-skills{
+min-width: 400px;
+margin: 0 auto;
+}
+}
+@media (max-width: 810px){
+  header nav{
+        padding: 20px 30px;
+        font-size:1rem;  
+  }
+  .nav-links ul{
+        flex-direction: column;
+
+       
+    }
+    .nav{
+        /* display: none; */
+        position: absolute;
+        top:0;
+        right:-100%;
+        background-color: var(--surface-color);
+        padding:60px 50px;
+        height: 100vh;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s;
+
+
+    }
+    .navshow{
+        right:0;
+         opacity: 1;
+        visibility: visible;
+
+    }
+    .toggle{
+        display: block;
+        font-size: 1.8rem;
+    }
+    .close{
+        display: block;
+        position: absolute;
+        top:20px;
+        left: 10px;
+        
+       
+    }
+    .close i{
+        font-size: 22px;
+    }
+
 }
 @media (max-width: 768px){
     /* nav menu */
@@ -1999,46 +2083,45 @@ margin: 0 auto;
     }
 /* services section */
    .services{
-       padding: 0 20px 50px !important;
-       margin: 0 auto !important;
-       width: 100%;
-   }
-   .services h2{
-       font-size: 2.5rem;
-       margin-bottom: 40px;
-   }
-   .main-card{
-        display: grid;
-        grid-template-columns: repeat(2, minmax(220px, 1fr));
-        gap: 18px;
-        justify-items: center;
+        min-height: auto;
+        margin-bottom: 20px;
+    }
+    .services h2{
+        margin-bottom: 20px;
+    }
+    .main-card{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         align-items: stretch;
-        width: 100%;
-        max-width: 1000px;
+        gap: 18px;
     }
     .cards{
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
-        padding: 22px;
+        width: calc(50% - 18px);
+        max-width: 320px;
+        /* height: 300px; */
+        padding: 20px;
+        min-width: 220px;
         height: auto;
         transform: none;
     }
-    .cards:nth-child(odd),
-    .cards:nth-child(even),
-    .cards.active{
+    .cards:nth-child(1),
+    .cards:nth-child(2),
+    .cards:nth-child(3),
+    .cards:nth-child(4),
+    .cards:nth-child(5){
         transform: none !important;
     }
-    .cards:hover,
-    .cards.active:hover{
-        transform: scale(1.01);
-    }
     .cards h3{
-        font-size: 1.1rem;
+        font-size:1rem;
     }
     .cards p{
-        line-height: 1.4;
+        line-height: 1.2;
         font-size: 0.95rem;
+    }
+    
+    .skills-section h1{
+        font-size: 2rem;
     }
     /* project section */
     .project-section{
@@ -2048,6 +2131,51 @@ margin: 0 auto;
     .project-section h1{
         margin-bottom: 20px;
     }
+}
+@media (max-width: 440px){
+    .education-skills{
+min-width: 100%;
+margin: 0 auto;
+}
+}
+@media (max-width: 458px){
+    .services{
+        /* min-height: auto; */
+    }
+    .main-card{
+        /* display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: stretch;
+        gap: 18px; */
+    }
+    .cards{
+        /* width: calc(50% - 18px);
+        max-width: 320px;
+        height: 300px;
+        padding: 20px;
+        min-width: 220px;
+        height: auto; */
+        max-width: 100%;
+        width: 100%;
+        transform: none;
+        margin : 0 20px;
+    }
+    .cards:nth-child(1),
+    .cards:nth-child(2),
+    .cards:nth-child(3),
+    .cards:nth-child(4),
+    .cards:nth-child(5){
+        transform: none !important;
+    }
+    .cards h3{
+        font-size:1rem;
+    }
+    .cards p{
+        line-height: 1.2;
+        font-size: 0.95rem;
+    }
+    
 }
 @media (max-width: 450px){
     .contact-section{
@@ -2081,24 +2209,14 @@ margin: 0 auto;
     }
 }
 @media (max-width: 430px){
-    .main-card{
+    /* .main-card{
        display: grid;
-        grid-template-columns: 1fr 1fr;
-        /* grid-template-rows: 1fr 1fr 1fr; */
-        gap: 20px;
+        grid-template-columns: 1fr 1fr; */
+         /* grid-template-rows: 1fr 1fr 1fr; */
+        /* gap: 20px;
         align-items: center;
         justify-content: center;
         margin: 0 auto;
-    }
+    } */
 
-}
-@media (max-width: 830px) {
-        .image-dash img{
-            height: 400px;
-        }
-}
-@media (max-width: 600px) {
-    .image-dash img{
-        height: 300px;
-    }
 }
