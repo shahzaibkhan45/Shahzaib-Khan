@@ -569,7 +569,8 @@ background-color: var(--primary-color);
     cursor: pointer;
       background-color: var(--surface-color) !important;
       padding:10px 15px;
-      border-radius: 10px;
+      border-radius:0 10px 10px 10px;
+      border-bottom: none;
 }
 
 .side-bar{
@@ -578,9 +579,10 @@ background-color: var(--primary-color);
     display: flex;
     flex-direction: column;
     gap: 10px;
-      border-radius: 10px;
+      border-radius: 0px 10px 10px 10px;
+      /* border-top: none !important; */
      background-color: var(--surface-color);
-      margin-left: 3px;
+      /* margin-left: 3px; */
 }
 .side-bar-close{
     transition: 0.3s;
