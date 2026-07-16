@@ -1619,9 +1619,9 @@ gap:10px;
     }
     /* hero section */
     .hero-section{
-        min-height: auto;
+        /* min-height: auto; */
         margin: 0 100px;
-        padding: 60px 0;
+        /* padding: 60px 0; */
         font-size:1rem;
     }
     .hero-image img{
