@@ -250,24 +250,58 @@ window.addEventListener("scroll", () => {
 if ("scrollRestoration" in history) {
     history.scrollRestoration = "manual";
 }
-if(document.querySelector("header nav")){
-const navHeight = document.querySelector("header nav").offsetHeight;
+// if(document.querySelector("header nav")){
+// const navHeight = document.querySelector("header nav").offsetHeight;
 
-function scrollToHash() {
-    const hash = window.location.hash;
-    if (hash) {
-        const target = document.querySelector(hash);
-        if (target) {
-            setTimeout(() => {
-                window.scrollTo({
-                    top: target.offsetTop - navHeight,
-                    behavior: "smooth"
-                });
-            }, 100);
-        }
-    }
-}
+// function scrollToHash() {
+//     const hash = window.location.hash;
+//     if (hash) {
+//         const target = document.querySelector(hash);
+//         if (target) {
+//             setTimeout(() => {
+//                 window.scrollTo({
+//                     top: target.offsetTop - navHeight,
+//                     behavior: "smooth"
+//                 });
+//             }, 100);
+//         }
+//     }
+// }
 
+const header = document.querySelector("header nav");
+
+if (header) {
+
+    const navHeight = header.offsetHeight;
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+        link.addEventListener("click", function (e) {
+
+            const href = this.getAttribute("href");
+
+            // sirf page ke internal links
+            if (href === "#") return;
+
+            const target = document.querySelector(href);
+
+            if (!target) return;
+
+            e.preventDefault();
+
+            window.scrollTo({
+                top: target.offsetTop - navHeight,
+                behavior: "smooth"
+            });
+
+            // URL se # hata do
+            history.replaceState(null, "", window.location.pathname);
+
+        });
+
+    });
+
+// }
 
 // Scroll to hash on page load
 window.addEventListener("load", () => {
@@ -289,7 +323,7 @@ window.addEventListener("load", () => {
 
 });
 // Scroll to hash when hash changes
-window.addEventListener("hashchange", scrollToHash);
+// window.addEventListener("hashchange", scrollToHash);
 
 document.querySelectorAll('.nav-links a, .logo a').forEach(link => {
     link.addEventListener("click", function (e) {
