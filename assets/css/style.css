@@ -168,12 +168,12 @@ list-style-type:none;
 /* hero section / home section*/
 .hero-section{
     height: 100%;
-    /* min-height: calc(100vh - 75px); */
+    min-height: calc(100vh - 75px);
     display:flex;
     justify-content:center;
     align-items:center;
     margin: 0 200px;
-    padding: 130px 0;
+    /* padding: 130px 0; */
     /* padding: 130px 0px; */
     gap: 50px;
     font-size:1.5rem;
@@ -414,10 +414,10 @@ gap:20px;
 
 /* about section */
 .about-section{
-    /* padding-top:10px ; */
-    padding: 125px 0;
+    padding-top:10px ;
+    /* padding: 125px 0; */
      height: 100%;
-    /* min-height: calc(100vh - 75px); */
+    min-height: calc(100vh - 75px);
     display:flex;
     justify-content:center;
     align-items:center;
