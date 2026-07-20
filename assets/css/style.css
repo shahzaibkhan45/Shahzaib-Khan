@@ -1633,9 +1633,9 @@ gap:10px;
     }
     /* hero section */
     .hero-section{
-        min-height: auto;
+        /* min-height: auto; */
         margin: 0 100px;
-        padding: 100px 0;
+        /* padding: 100px 0; */
         font-size:1rem;
     }
     .hero-image img{
@@ -1643,10 +1643,10 @@ gap:10px;
     }
     /* about section */
     .about-section{
-        min-height: auto;
+        /* min-height: auto; */
         /* margin: 160px 100px; */
         margin: 10px 100px;
-          padding: 60px 0;
+          /* padding: 60px 0; */
         font-size:1rem;
     }
     .about-img img{
